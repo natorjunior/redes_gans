@@ -161,7 +161,7 @@ for epoch in range(epochs):
                 st.plotly_chart(fig, use_container_width=True)
             with col2:
                 # Carregar o modelo de volta (opcional)
-                loaded_model = tf.keras.models.load_model('part1/gerador/dense1_sem_treinamento_gerador.h5')
+                loaded_model = tf.keras.models.load_model('streamlit/part1/gerador/dense1_sem_treinamento_gerador.h5')
 
                 # Fazer previsões com o modelo carregado (apenas para teste)
                 data = np.random.normal(0, 0.5, (10, 100))
@@ -183,7 +183,7 @@ for epoch in range(epochs):
 
                 # Display the second plot in the second column
                 st.plotly_chart(fig2, use_container_width=True)
-            loaded_model_dense2 = tf.keras.models.load_model('part1/gerador/dense2_sem_treinamento_gerador.h5')
+            loaded_model_dense2 = tf.keras.models.load_model('streamlit/part1/gerador/dense2_sem_treinamento_gerador.h5')
             # Fazer previsões com o modelo carregado (apenas para teste)
             #data = np.random.normal(0, 0.5, (10, 100))
             predictions_dense2 = loaded_model_dense2.predict(data)
@@ -195,7 +195,7 @@ for epoch in range(epochs):
             st.plotly_chart(fig3, use_container_width=True)
         elif selecao_view == 'SAÍDA':
             import os
-            diretorio = 'part1/gerador/models'
+            diretorio = 'streamlit/part1/gerador/models'
             extensao_desejada = '.h5'
             # Listar apenas arquivos com a extensão desejada
             arquivos_com_extensao = [arquivo for arquivo in os.listdir(diretorio) if arquivo.endswith(extensao_desejada)]
@@ -204,7 +204,7 @@ for epoch in range(epochs):
                                                 #  "generator_5000_MNIST.h5","generator_20000_MNIST.h5","generator_24000_MNIST.h5",
                                                 #  "basico_50k_epoca","basico_100k_epoca",
                                                 #"ajustado_1k_epoca","ajustado_10k_epoca","ajustado_50k_epoca","ajustado_100k_epoca",])
-            loaded_model_saida = tf.keras.models.load_model('part1/gerador/models/'+plot_type2)
+            loaded_model_saida = tf.keras.models.load_model('streamlit/part1/gerador/models/'+plot_type2)
             data = np.random.normal(0, 0.5, (10, 100))
             if st.button('reload'):
                 data = np.random.normal(0, 0.5, (10, 100))
@@ -340,7 +340,7 @@ if paginas == 'TEXTO':
         padded_sequences = pad_sequences(sequences, maxlen=max_length, padding='post')
         # Carregar o modelo de volta (opcional)
         import os
-        diretorio = 'mnist/models_TEXT'
+        diretorio = 'streamlit/mnist/models_TEXT'
         extensao_desejada = '.h5'
         # Listar apenas arquivos com a extensão desejada
         arquivos_com_extensao = [arquivo for arquivo in os.listdir(diretorio) if arquivo.endswith(extensao_desejada)]
@@ -349,7 +349,7 @@ if paginas == 'TEXTO':
                                             #  "generator_5000_MNIST.h5","generator_20000_MNIST.h5","generator_24000_MNIST.h5",
                                             #  "basico_50k_epoca","basico_100k_epoca",
                                             #"ajustado_1k_epoca","ajustado_10k_epoca","ajustado_50k_epoca","ajustado_100k_epoca",])
-        loaded_model = tf.keras.models.load_model('mnist/models_TEXT/'+plot_type2)
+        loaded_model = tf.keras.models.load_model('streamlit/mnist/models_TEXT/'+plot_type2)
         #loaded_model = tf.keras.models.load_model('mnist/models_TEXT/generator_5000_TEXT.h5')
         if st.button('gerar_texto'):
             # Fazer previsões com o modelo carregado (apenas para teste)
